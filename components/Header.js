@@ -3,8 +3,8 @@ import Image from 'next/image'
 
 const Header = ({downloadsToggle,routes,headerDropDownRoutes,logo}) => {
   return (
-    <div className="text-white body-font bg-black w-screen fixed top-0 z-50">
-    <div className="container  flex mx-auto  py-7 px-72 flex-col md:flex-row items-center justify-around w-full">
+    <div className="text-white body-font bg-black w-screen fixed top-0 z-20">
+    <div className="container  flex mx-auto  py-7 px-40 flex-col md:flex-row items-center justify-around w-full">
       <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
         <img src={logo}  />
         

@@ -8,7 +8,10 @@ import Mainbody from '../components/Mainbody'
 import Variant from '../components/Variant'
 import Footer from '../components/Footer'
 import Specification from '../components/Specification'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import CustomModal from '../components/CustomModal'
+import Script from 'next/script'
+
 
 export async function getStaticProps() {
 
@@ -59,20 +62,24 @@ export async function getStaticProps() {
 
 const Home= ({headerRoutes,headerDropDownRoutes,heroImages,bodyDetails,logoAddress,specifications,socials}) => {
  
+  const [showModal, setShowModal] = useState(false);
 
+ useEffect(()=>{
+  setTimeout(()=> setShowModal(true),4000 )
+ },[])
 
 
   return (
     <>
-    <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-<div className="modal">
-  <div className="modal-box relative">
-    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 className="text-lg font-bold">Congratulations random Interner user!</h3>
-    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-  </div>
-</div>
-    <div className="">
+    <div className="relative">
+      {/* paytm */}
+
+      {/* add paytm script here from patymScript.txt file */}
+
+      {/* mainbody */}
+    {showModal ? (
+        <CustomModal showModal={showModal} setShowModal={setShowModal} />
+      ) : null}
       <Head>
       <title>Euler HiLoad - Electric Three Wheeler Vehicle | Euler Motors</title>
         <link rel="icon" href="https://www.eulermotors.com/images/fav.ico" />
@@ -91,7 +98,6 @@ const Home= ({headerRoutes,headerDropDownRoutes,heroImages,bodyDetails,logoAddre
       </div>
       <Variant image={bodyDetails[7].attributes.image} heading={bodyDetails[7].attributes.heading} subeadingOne={bodyDetails[7].attributes.subheading} subheadingTwo={bodyDetails[7].attributes.suheadingTwo} />
       <Specification specifications={specifications} terms={logoAddress.attributes.specializationTerms} />
-      <label htmlFor="my-modal-3" className="btn modal-button hidden">open modal</label>
       <Footer headerRoutes={headerRoutes} headerDropDownRoutes={headerDropDownRoutes}  logo={logoAddress.attributes.FooterLogo} address={logoAddress.attributes.Address} socials={socials}/>
           
     </div>
@@ -101,3 +107,6 @@ const Home= ({headerRoutes,headerDropDownRoutes,heroImages,bodyDetails,logoAddre
 }
 
 export default Home
+
+//https://www.youtube.com/watch?v=aWNTMRPkf58&list=PLu0W_9lII9ajKKSG5aROCiw9iro5vK-gE&index=8
+//46:33
